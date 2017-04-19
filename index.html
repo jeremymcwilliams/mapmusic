@@ -50,6 +50,8 @@
       function geocodeLL(map, geocoder, infowindow, latlng){
       // var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
         geocoder.geocode({'location': latlng}, function(results, status) {
+        	console.log(results);
+        
           if (status === 'OK') {
             if (results[1]) {
               map.setZoom(11);
