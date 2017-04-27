@@ -17,6 +17,9 @@
   
   
   
+  
+  
+  
       <script>
       var map;
       function initMap() {
@@ -61,9 +64,10 @@
           	console.log(country);
           	
           	two=last.address_components[0].short_name;
+          	
           	console.log(two);
           	
-          
+           next();
           
 
           } else {
@@ -74,6 +78,31 @@
         
         }
       
+ 
+ 
+ 
+ 
+ function next(){
+ 
+ 
+  var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+  $.getJSON( flickerAPI, {
+    tags: "mount rainier",
+    tagmode: "any",
+    format: "json"
+  })
+    .done(function( data ) {
+      $.each( data.items, function( i, item ) {
+        $( "<img>" ).attr( "src", item.media.m ).appendTo( "#tracks" );
+        if ( i === 3 ) {
+          return false;
+        }
+      });
+    });
+ 
+ 
+ 
+ }
       
       
     </script>
